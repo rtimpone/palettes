@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum UserDefaultDatabaseError: Error {
+    case duplicateFoundWhileTryingToInsert
+    case objectForUpdateNotFound(String)
+}
+
 struct UserDefaultDatabase: Database {
  
     let defaults: UserDefaults
@@ -24,15 +29,22 @@ struct UserDefaultDatabase: Database {
         write(objects: objects, ofType: T.self)
     }
     
-    func updateObject<T: Codable>(_ object: T) where T: Persistable {
-            
+    func updateObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable  {
+        var objects = fetchObjects(ofType: T.self)
+        guard let oldObjectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) else {
+            let errorMessage = "Unable to find object with primary key '\(object.primaryKey)'"
+            throw UserDefaultDatabaseError.objectForUpdateNotFound(errorMessage)
+        }
+        objects.remove(at: oldObjectIndex)
+        objects.append(object)
+        write(objects: objects, ofType: T.self)
     }
     
-    func upsertObject<T: Codable>(_ object: T) where T: Persistable {
+    func upsertObject<T: Codable>(_ object: T) where T: UniquelyIdentifiable {
                 
     }
     
-    func deleteObject<T: Codable>(_ object: T) where T: Persistable {
+    func deleteObject<T: Codable>(_ object: T) where T: UniquelyIdentifiable {
                     
     }
     

@@ -20,8 +20,16 @@ class UserDefaultsDatabaseTests: XCTestCase {
         database = UserDefaultDatabase(defaults: defaults)
     }
     
-    struct TestObject: Codable {
+    struct TestObject: Codable, UniquelyIdentifiable {
+        
+        typealias PrimaryKey = UUID
+        let primaryKey: UUID
         let name: String
+        
+        init(name: String, primaryKey: UUID = UUID()) {
+            self.name = name
+            self.primaryKey = primaryKey
+        }
     }
     
     func testReadEmptyDatabase() {
@@ -30,9 +38,40 @@ class UserDefaultsDatabaseTests: XCTestCase {
     }
     
     func testInsertObject() {
+        
         let object = TestObject(name: "foo")
         database.insertObject(object)
+        
         let objects = database.fetchObjects(ofType: TestObject.self)
         XCTAssertEqual(objects.count, 1, "Expected there to be exactly one item in the database because that's the only thing we've written to it")
+    }
+    
+    func testInsertingDuplicateObjectThrows() {
+        
+    }
+    
+    func testUpdateObject() throws {
+        
+        let object = TestObject(name: "foo")
+        database.insertObject(object)
+        
+        let newObject = TestObject(name: "bar", primaryKey: object.primaryKey)
+        try database.updateObject(newObject)
+        
+        let objects = database.fetchObjects(ofType: TestObject.self)
+        XCTAssertEqual(objects.count, 1, "Expected there to be only one object in the database because we inserted one, then updated it")
+        
+        let fetchedObject = try XCTUnwrap(objects.first)
+        XCTAssertEqual(fetchedObject.name, "bar", "Expected the name to be updated to the new value we gave it")
+    }
+    
+    func testUpdatingNonExistantObjectThrows() {
+        let object = TestObject(name: "foo")
+        XCTAssertThrowsError(try database.updateObject(object)) { error in
+            guard case UserDefaultDatabaseError.objectForUpdateNotFound(_) = error else {
+                XCTFail("Wrong error type was thrown for attempting to update an object that does not exist")
+                return
+            }
+        }
     }
 }
