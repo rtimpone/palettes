@@ -9,11 +9,12 @@
 import Foundation
 
 protocol Database {
-    func insertObject<T: Codable>(_ object: T)
+    func insertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
     func updateObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
-    func upsertObject<T: Codable>(_ object: T) where T: UniquelyIdentifiable
-    func deleteObject<T: Codable>(_ object: T) where T: UniquelyIdentifiable
-    func fetchObjects<T: Codable>(ofType type: T.Type) -> [T]
+    func upsertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
+    func deleteObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
+    func fetchObject<T: Codable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T? where T: UniquelyIdentifiable
+    func fetchObjects<T: Codable>(ofType type: T.Type) throws -> [T]
 }
 
 protocol UniquelyIdentifiable {
