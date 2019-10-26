@@ -1,5 +1,5 @@
 //
-//  UIColor+Extensions.swift
+//  UIColor+Hex.swift
 //  Palettes
 //
 //  Created by Rob Timpone on 10/26/19.

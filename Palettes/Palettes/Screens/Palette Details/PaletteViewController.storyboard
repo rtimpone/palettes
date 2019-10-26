@@ -1,28 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GYU-N6-BxI">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O8Y-w6-SX9">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Palette-->
-        <scene sceneID="8Bb-x8-svZ">
+        <!--Color Palette-->
+        <scene sceneID="F2M-iX-wdK">
             <objects>
-                <viewController id="GYU-N6-BxI" customClass="PaletteViewController" customModule="Palettes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JQV-KG-wFG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="O8Y-w6-SX9" customClass="PaletteViewController" customModule="ColorPalettes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kUd-3m-OUI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-sX-yzW" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZR0-nY-eIw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#F0F0F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kn-hh-QfW">
+                                                <rect key="frame" x="8" y="230" width="152" height="36"/>
+                                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="3kn-hh-QfW" firstAttribute="leading" secondItem="ZR0-nY-eIw" secondAttribute="leading" constant="8" id="58E-vr-9hc"/>
+                                            <constraint firstAttribute="bottom" secondItem="3kn-hh-QfW" secondAttribute="bottom" constant="8" id="s9C-yF-dvp"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="hZs-OJ-ZLF" appends="YES" id="CDf-cB-gLs"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flH-Sb-gqS">
+                                        <rect key="frame" x="0.0" y="274" width="375" height="184"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#F0F0F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAg-e6-vdV">
+                                                <rect key="frame" x="8" y="140" width="152" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="3NW-GR-oKR" appends="YES" id="yOB-fF-d3d"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5o-Sk-rNL">
+                                        <rect key="frame" x="0.0" y="458" width="375" height="116"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#F0F0F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5C-en-VZB">
+                                                <rect key="frame" x="8" y="72" width="152" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="m0t-sQ-eeG" appends="YES" id="FJ5-1c-R2v"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EnB-vk-mT6">
+                                        <rect key="frame" x="0.0" y="574" width="375" height="116"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#F0F0F0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-Eg-Mpg">
+                                                <rect key="frame" x="8" y="72" width="152" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Vye-On-daQ" appends="YES" id="ncV-m9-PIq"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="flH-Sb-gqS" secondAttribute="trailing" id="0tw-YS-1Wv"/>
+                                    <constraint firstAttribute="trailing" secondItem="EnB-vk-mT6" secondAttribute="trailing" id="5lo-rl-nvJ"/>
+                                    <constraint firstItem="EnB-vk-mT6" firstAttribute="top" secondItem="r5o-Sk-rNL" secondAttribute="bottom" id="7pG-P5-b9R"/>
+                                    <constraint firstItem="r5o-Sk-rNL" firstAttribute="height" secondItem="Wbg-sX-yzW" secondAttribute="height" multiplier="116:690" id="DpE-NK-cnD"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZR0-nY-eIw" secondAttribute="trailing" id="Gni-Km-YVz"/>
+                                    <constraint firstItem="flH-Sb-gqS" firstAttribute="height" secondItem="Wbg-sX-yzW" secondAttribute="height" multiplier="184:690" id="Jde-gG-eAZ"/>
+                                    <constraint firstItem="flH-Sb-gqS" firstAttribute="top" secondItem="ZR0-nY-eIw" secondAttribute="bottom" id="My6-bM-aIi"/>
+                                    <constraint firstItem="ZR0-nY-eIw" firstAttribute="leading" secondItem="Wbg-sX-yzW" secondAttribute="leading" id="UUm-hC-UNk"/>
+                                    <constraint firstItem="r5o-Sk-rNL" firstAttribute="top" secondItem="flH-Sb-gqS" secondAttribute="bottom" id="Ujz-Sn-Hwp"/>
+                                    <constraint firstItem="r5o-Sk-rNL" firstAttribute="top" secondItem="flH-Sb-gqS" secondAttribute="bottom" id="VWW-DI-97c"/>
+                                    <constraint firstItem="r5o-Sk-rNL" firstAttribute="leading" secondItem="Wbg-sX-yzW" secondAttribute="leading" id="YPB-a6-nV9"/>
+                                    <constraint firstItem="EnB-vk-mT6" firstAttribute="height" secondItem="Wbg-sX-yzW" secondAttribute="height" multiplier="116:690" id="c5M-V6-CeX"/>
+                                    <constraint firstItem="EnB-vk-mT6" firstAttribute="top" secondItem="r5o-Sk-rNL" secondAttribute="bottom" id="ddw-Vf-hCN"/>
+                                    <constraint firstItem="flH-Sb-gqS" firstAttribute="leading" secondItem="Wbg-sX-yzW" secondAttribute="leading" id="fK2-k0-bfw"/>
+                                    <constraint firstAttribute="bottom" secondItem="EnB-vk-mT6" secondAttribute="bottom" id="gDw-2p-DES"/>
+                                    <constraint firstItem="EnB-vk-mT6" firstAttribute="leading" secondItem="Wbg-sX-yzW" secondAttribute="leading" id="gPq-D9-9Ke"/>
+                                    <constraint firstItem="ZR0-nY-eIw" firstAttribute="height" secondItem="Wbg-sX-yzW" secondAttribute="height" multiplier="274:690" id="hMz-Eo-0Ov"/>
+                                    <constraint firstItem="ZR0-nY-eIw" firstAttribute="top" secondItem="Wbg-sX-yzW" secondAttribute="top" id="nzj-rE-WBe"/>
+                                    <constraint firstAttribute="trailing" secondItem="r5o-Sk-rNL" secondAttribute="trailing" id="suV-Kr-f1J"/>
+                                    <constraint firstItem="flH-Sb-gqS" firstAttribute="top" secondItem="ZR0-nY-eIw" secondAttribute="bottom" id="uPS-Lj-hBK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="lv8-PH-yDr"/>
+                        <constraints>
+                            <constraint firstItem="Wbg-sX-yzW" firstAttribute="trailing" secondItem="Q8i-Tb-jrF" secondAttribute="trailing" id="cMO-GL-NT0"/>
+                            <constraint firstItem="Wbg-sX-yzW" firstAttribute="top" secondItem="Q8i-Tb-jrF" secondAttribute="top" id="fVf-f5-syo"/>
+                            <constraint firstItem="Wbg-sX-yzW" firstAttribute="leading" secondItem="Q8i-Tb-jrF" secondAttribute="leading" id="mca-if-GZW"/>
+                            <constraint firstItem="Wbg-sX-yzW" firstAttribute="bottom" secondItem="Q8i-Tb-jrF" secondAttribute="bottom" id="qE3-97-IWl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q8i-Tb-jrF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Palette" id="uxJ-hZ-Z7L"/>
+                    <navigationItem key="navigationItem" title="Color Palette" id="lm3-9y-JMQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="primaryLabel" destination="3kn-hh-QfW" id="8qD-1i-laI"/>
+                        <outlet property="primaryView" destination="ZR0-nY-eIw" id="ppl-Sw-5AE"/>
+                        <outlet property="quaternaryLabel" destination="nv4-Eg-Mpg" id="Ho0-7J-KXY"/>
+                        <outlet property="quaternaryView" destination="EnB-vk-mT6" id="v1B-lj-Zih"/>
+                        <outlet property="secondaryLabel" destination="dAg-e6-vdV" id="x8C-Lv-8Bi"/>
+                        <outlet property="secondaryView" destination="flH-Sb-gqS" id="XDe-iz-6NE"/>
+                        <outlet property="tertiaryLabel" destination="s5C-en-VZB" id="g36-5Y-JQF"/>
+                        <outlet property="tertiaryView" destination="r5o-Sk-rNL" id="NCa-nf-KHo"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z21-1b-MXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5D-64-sSL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hZs-OJ-ZLF" userLabel="primary tap">
+                    <connections>
+                        <action selector="primaryTapped:" destination="O8Y-w6-SX9" id="Bqh-HT-aiC"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3NW-GR-oKR" userLabel="secondary tap">
+                    <connections>
+                        <action selector="secondaryTapped:" destination="O8Y-w6-SX9" id="aPe-vI-PS9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="m0t-sQ-eeG" userLabel="tertiary tap">
+                    <connections>
+                        <action selector="tertiaryTapped:" destination="O8Y-w6-SX9" id="bSm-LK-0L7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Vye-On-daQ">
+                    <connections>
+                        <action selector="quaternaryTapped:" destination="O8Y-w6-SX9" id="Hn6-IE-88I"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-303" y="162"/>
+            <point key="canvasLocation" x="-117.39130434782609" y="188.83928571428569"/>
         </scene>
     </scenes>
 </document>

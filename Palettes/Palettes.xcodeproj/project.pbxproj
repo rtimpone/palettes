@@ -16,12 +16,20 @@
 		FB90F9F423648A2500BDF960 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB90F9F223648A2500BDF960 /* ListCell.xib */; };
 		FB90F9F723648A9500BDF960 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9F623648A9500BDF960 /* ListCell.swift */; };
 		FB90F9F923648ABA00BDF960 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9F823648ABA00BDF960 /* Palette.swift */; };
-		FB90F9FB23648AD900BDF960 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */; };
+		FB90F9FB23648AD900BDF960 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9FA23648AD900BDF960 /* UIColor+Hex.swift */; };
 		FB90F9FE23648B1F00BDF960 /* BrightnessAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */; };
 		FB90FA0123648CC100BDF960 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0023648CC100BDF960 /* PaletteViewController.swift */; };
 		FB90FA0323648CD300BDF960 /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90FA0223648CD300BDF960 /* PaletteViewController.storyboard */; };
 		FB90FA0623648D2A00BDF960 /* CreatePaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0523648D2A00BDF960 /* CreatePaletteViewController.swift */; };
 		FB90FA0823648D3100BDF960 /* CreatePaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */; };
+		FB90FA0A23648E4300BDF960 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0923648E4300BDF960 /* Animator.swift */; };
+		FB90FA192364904500BDF960 /* SimpleDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; };
+		FB90FA202364904500BDF960 /* UserDefaultsDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */; };
+		FB90FA222364904500BDF960 /* SimpleDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = FB90FA122364904500BDF960 /* SimpleDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB90FA252364904500BDF960 /* SimpleDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; };
+		FB90FA262364904500BDF960 /* SimpleDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB90FA2F2364905100BDF960 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA2E2364905100BDF960 /* Database.swift */; };
+		FB90FA312364905900BDF960 /* UserDefaultsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +40,42 @@
 			remoteGlobalIDString = FB90F9BC23647FF000BDF960;
 			remoteInfo = Palettes;
 		};
+		FB90FA1A2364904500BDF960 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB90F9B523647FF000BDF960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB90FA0F2364904500BDF960;
+			remoteInfo = SimpleDatabase;
+		};
+		FB90FA1C2364904500BDF960 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB90F9B523647FF000BDF960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB90F9BC23647FF000BDF960;
+			remoteInfo = Palettes;
+		};
+		FB90FA232364904500BDF960 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB90F9B523647FF000BDF960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB90FA0F2364904500BDF960;
+			remoteInfo = SimpleDatabase;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB90FA2A2364904500BDF960 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FB90FA262364904500BDF960 /* SimpleDatabase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FB90F9BD23647FF000BDF960 /* Palettes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palettes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,12 +91,21 @@
 		FB90F9F223648A2500BDF960 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		FB90F9F623648A9500BDF960 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		FB90F9F823648ABA00BDF960 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
-		FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		FB90F9FA23648AD900BDF960 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessAnalyzer.swift; sourceTree = "<group>"; };
 		FB90FA0023648CC100BDF960 /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		FB90FA0223648CD300BDF960 /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
 		FB90FA0523648D2A00BDF960 /* CreatePaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaletteViewController.swift; sourceTree = "<group>"; };
 		FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePaletteViewController.storyboard; sourceTree = "<group>"; };
+		FB90FA0923648E4300BDF960 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		FB90FA102364904500BDF960 /* SimpleDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB90FA122364904500BDF960 /* SimpleDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleDatabase.h; sourceTree = "<group>"; };
+		FB90FA132364904500BDF960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB90FA182364904500BDF960 /* SimpleDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatabaseTests.swift; sourceTree = "<group>"; };
+		FB90FA212364904500BDF960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB90FA2E2364905100BDF960 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB90FA252364904500BDF960 /* SimpleDatabase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +121,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB90FA0D2364904500BDF960 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB90FA152364904500BDF960 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB90FA192364904500BDF960 /* SimpleDatabase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +147,8 @@
 			children = (
 				FB90F9BF23647FF000BDF960 /* Palettes */,
 				FB90F9D623647FF200BDF960 /* PalettesTests */,
+				FB90FA112364904500BDF960 /* SimpleDatabase */,
+				FB90FA1E2364904500BDF960 /* SimpleDatabaseTests */,
 				FB90F9BE23647FF000BDF960 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +158,8 @@
 			children = (
 				FB90F9BD23647FF000BDF960 /* Palettes.app */,
 				FB90F9D323647FF200BDF960 /* PalettesTests.xctest */,
+				FB90FA102364904500BDF960 /* SimpleDatabase.framework */,
+				FB90FA182364904500BDF960 /* SimpleDatabaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,7 +191,7 @@
 			children = (
 				FB90F9E3236480D500BDF960 /* AutoRegistering.swift */,
 				FB90F9E4236480D500BDF960 /* StoryboardInstantiable.swift */,
-				FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */,
+				FB90F9FA23648AD900BDF960 /* UIColor+Hex.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -172,6 +244,7 @@
 		FB90F9FC23648B0500BDF960 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FB90FA0923648E4300BDF960 /* Animator.swift */,
 				FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */,
 			);
 			path = Utilities;
@@ -195,7 +268,38 @@
 			path = "Create Palette";
 			sourceTree = "<group>";
 		};
+		FB90FA112364904500BDF960 /* SimpleDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				FB90FA122364904500BDF960 /* SimpleDatabase.h */,
+				FB90FA132364904500BDF960 /* Info.plist */,
+				FB90FA2E2364905100BDF960 /* Database.swift */,
+				FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */,
+			);
+			path = SimpleDatabase;
+			sourceTree = "<group>";
+		};
+		FB90FA1E2364904500BDF960 /* SimpleDatabaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */,
+				FB90FA212364904500BDF960 /* Info.plist */,
+			);
+			path = SimpleDatabaseTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FB90FA0B2364904500BDF960 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB90FA222364904500BDF960 /* SimpleDatabase.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		FB90F9BC23647FF000BDF960 /* Palettes */ = {
@@ -205,10 +309,12 @@
 				FB90F9B923647FF000BDF960 /* Sources */,
 				FB90F9BA23647FF000BDF960 /* Frameworks */,
 				FB90F9BB23647FF000BDF960 /* Resources */,
+				FB90FA2A2364904500BDF960 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB90FA242364904500BDF960 /* PBXTargetDependency */,
 			);
 			name = Palettes;
 			productName = Palettes;
@@ -233,6 +339,43 @@
 			productReference = FB90F9D323647FF200BDF960 /* PalettesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FB90FA0F2364904500BDF960 /* SimpleDatabase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB90FA272364904500BDF960 /* Build configuration list for PBXNativeTarget "SimpleDatabase" */;
+			buildPhases = (
+				FB90FA0B2364904500BDF960 /* Headers */,
+				FB90FA0C2364904500BDF960 /* Sources */,
+				FB90FA0D2364904500BDF960 /* Frameworks */,
+				FB90FA0E2364904500BDF960 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleDatabase;
+			productName = SimpleDatabase;
+			productReference = FB90FA102364904500BDF960 /* SimpleDatabase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FB90FA172364904500BDF960 /* SimpleDatabaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB90FA2B2364904500BDF960 /* Build configuration list for PBXNativeTarget "SimpleDatabaseTests" */;
+			buildPhases = (
+				FB90FA142364904500BDF960 /* Sources */,
+				FB90FA152364904500BDF960 /* Frameworks */,
+				FB90FA162364904500BDF960 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB90FA1B2364904500BDF960 /* PBXTargetDependency */,
+				FB90FA1D2364904500BDF960 /* PBXTargetDependency */,
+			);
+			name = SimpleDatabaseTests;
+			productName = SimpleDatabaseTests;
+			productReference = FB90FA182364904500BDF960 /* SimpleDatabaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -247,6 +390,14 @@
 						CreatedOnToolsVersion = 11.1;
 					};
 					FB90F9D223647FF200BDF960 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = FB90F9BC23647FF000BDF960;
+					};
+					FB90FA0F2364904500BDF960 = {
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
+					};
+					FB90FA172364904500BDF960 = {
 						CreatedOnToolsVersion = 11.1;
 						TestTargetID = FB90F9BC23647FF000BDF960;
 					};
@@ -267,6 +418,8 @@
 			targets = (
 				FB90F9BC23647FF000BDF960 /* Palettes */,
 				FB90F9D223647FF200BDF960 /* PalettesTests */,
+				FB90FA0F2364904500BDF960 /* SimpleDatabase */,
+				FB90FA172364904500BDF960 /* SimpleDatabaseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,6 +443,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB90FA0E2364904500BDF960 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB90FA162364904500BDF960 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -304,8 +471,9 @@
 				FB90F9FE23648B1F00BDF960 /* BrightnessAnalyzer.swift in Sources */,
 				FB90F9EE236482AC00BDF960 /* ListViewController.swift in Sources */,
 				FB90F9F923648ABA00BDF960 /* Palette.swift in Sources */,
-				FB90F9FB23648AD900BDF960 /* UIColor+Extensions.swift in Sources */,
+				FB90F9FB23648AD900BDF960 /* UIColor+Hex.swift in Sources */,
 				FB90F9F723648A9500BDF960 /* ListCell.swift in Sources */,
+				FB90FA0A23648E4300BDF960 /* Animator.swift in Sources */,
 				FB90F9C123647FF000BDF960 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +486,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB90FA0C2364904500BDF960 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB90FA2F2364905100BDF960 /* Database.swift in Sources */,
+				FB90FA312364905900BDF960 /* UserDefaultsDatabase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB90FA142364904500BDF960 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB90FA202364904500BDF960 /* UserDefaultsDatabaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -325,6 +510,21 @@
 			isa = PBXTargetDependency;
 			target = FB90F9BC23647FF000BDF960 /* Palettes */;
 			targetProxy = FB90F9D423647FF200BDF960 /* PBXContainerItemProxy */;
+		};
+		FB90FA1B2364904500BDF960 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB90FA0F2364904500BDF960 /* SimpleDatabase */;
+			targetProxy = FB90FA1A2364904500BDF960 /* PBXContainerItemProxy */;
+		};
+		FB90FA1D2364904500BDF960 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB90F9BC23647FF000BDF960 /* Palettes */;
+			targetProxy = FB90FA1C2364904500BDF960 /* PBXContainerItemProxy */;
+		};
+		FB90FA242364904500BDF960 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB90FA0F2364904500BDF960 /* SimpleDatabase */;
+			targetProxy = FB90FA232364904500BDF960 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -446,6 +646,7 @@
 		FB90F9DD23647FF200BDF960 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HTVQW2NNE8;
@@ -465,6 +666,7 @@
 		FB90F9DE23647FF200BDF960 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HTVQW2NNE8;
@@ -525,6 +727,103 @@
 			};
 			name = Release;
 		};
+		FB90FA282364904500BDF960 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HTVQW2NNE8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SimpleDatabase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.robtimpone.SimpleDatabase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FB90FA292364904500BDF960 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HTVQW2NNE8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SimpleDatabase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.robtimpone.SimpleDatabase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FB90FA2C2364904500BDF960 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTVQW2NNE8;
+				INFOPLIST_FILE = SimpleDatabaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.robtimpone.SimpleDatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palettes.app/Palettes";
+			};
+			name = Debug;
+		};
+		FB90FA2D2364904500BDF960 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HTVQW2NNE8;
+				INFOPLIST_FILE = SimpleDatabaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.robtimpone.SimpleDatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palettes.app/Palettes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -551,6 +850,24 @@
 			buildConfigurations = (
 				FB90F9E023647FF200BDF960 /* Debug */,
 				FB90F9E123647FF200BDF960 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB90FA272364904500BDF960 /* Build configuration list for PBXNativeTarget "SimpleDatabase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB90FA282364904500BDF960 /* Debug */,
+				FB90FA292364904500BDF960 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB90FA2B2364904500BDF960 /* Build configuration list for PBXNativeTarget "SimpleDatabaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB90FA2C2364904500BDF960 /* Debug */,
+				FB90FA2D2364904500BDF960 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
