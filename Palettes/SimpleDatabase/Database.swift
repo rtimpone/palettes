@@ -8,16 +8,24 @@
 
 import Foundation
 
+typealias Persistable = Codable & UniquelyIdentifiable
+
 protocol Database {
-    func insertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
-    func updateObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
-    func upsertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
-    func deleteObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable
-    func fetchObject<T: Codable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T? where T: UniquelyIdentifiable
-    func fetchObjects<T: Codable>(ofType type: T.Type) throws -> [T]
+    func insertObject<T: Persistable>(_ object: T) throws
+    func updateObject<T: Persistable>(_ object: T) throws
+    func upsertObject<T: Persistable>(_ object: T) throws
+    func deleteObject<T: Persistable>(_ object: T) throws
+    func fetchObject<T: Persistable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T?
+    func fetchObjects<T: Persistable>(ofType type: T.Type) throws -> [T]
+    mutating func addObserver<O: DatabaseObserver, T: Persistable>(_ observer: O, forType type: T.Type) throws
 }
 
 protocol UniquelyIdentifiable {
     associatedtype PrimaryKey: Equatable
     var primaryKey: PrimaryKey { get }
+}
+
+protocol DatabaseObserver: class {
+    func databaseDidAddObserver<T>(initialValues: [T])
+    func databaseDidChange<T>(updatedValues: [T])
 }

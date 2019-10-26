@@ -24,12 +24,15 @@
 		FB90FA0823648D3100BDF960 /* CreatePaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */; };
 		FB90FA0A23648E4300BDF960 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0923648E4300BDF960 /* Animator.swift */; };
 		FB90FA192364904500BDF960 /* SimpleDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; };
-		FB90FA202364904500BDF960 /* UserDefaultsDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */; };
 		FB90FA222364904500BDF960 /* SimpleDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = FB90FA122364904500BDF960 /* SimpleDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB90FA252364904500BDF960 /* SimpleDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; };
 		FB90FA262364904500BDF960 /* SimpleDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB90FA102364904500BDF960 /* SimpleDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB90FA2F2364905100BDF960 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA2E2364905100BDF960 /* Database.swift */; };
 		FB90FA312364905900BDF960 /* UserDefaultsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */; };
+		FBD5A24B2364D07B005A187E /* DatabaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A24A2364D07B005A187E /* DatabaseTestCase.swift */; };
+		FBD5A24D2364D0F0005A187E /* DatabaseReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A24C2364D0F0005A187E /* DatabaseReadTests.swift */; };
+		FBD5A24F2364D0F8005A187E /* DatabaseWriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A24E2364D0F8005A187E /* DatabaseWriteTests.swift */; };
+		FBD5A2512364D101005A187E /* DatabaseObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A2502364D101005A187E /* DatabaseObservationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,10 +105,13 @@
 		FB90FA122364904500BDF960 /* SimpleDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleDatabase.h; sourceTree = "<group>"; };
 		FB90FA132364904500BDF960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB90FA182364904500BDF960 /* SimpleDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatabaseTests.swift; sourceTree = "<group>"; };
 		FB90FA212364904500BDF960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB90FA2E2364905100BDF960 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatabase.swift; sourceTree = "<group>"; };
+		FBD5A24A2364D07B005A187E /* DatabaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTestCase.swift; sourceTree = "<group>"; };
+		FBD5A24C2364D0F0005A187E /* DatabaseReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReadTests.swift; sourceTree = "<group>"; };
+		FBD5A24E2364D0F8005A187E /* DatabaseWriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWriteTests.swift; sourceTree = "<group>"; };
+		FBD5A2502364D101005A187E /* DatabaseObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseObservationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,8 +288,11 @@
 		FB90FA1E2364904500BDF960 /* SimpleDatabaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB90FA1F2364904500BDF960 /* UserDefaultsDatabaseTests.swift */,
 				FB90FA212364904500BDF960 /* Info.plist */,
+				FBD5A24A2364D07B005A187E /* DatabaseTestCase.swift */,
+				FBD5A24C2364D0F0005A187E /* DatabaseReadTests.swift */,
+				FBD5A24E2364D0F8005A187E /* DatabaseWriteTests.swift */,
+				FBD5A2502364D101005A187E /* DatabaseObservationTests.swift */,
 			);
 			path = SimpleDatabaseTests;
 			sourceTree = "<group>";
@@ -499,7 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB90FA202364904500BDF960 /* UserDefaultsDatabaseTests.swift in Sources */,
+				FBD5A24B2364D07B005A187E /* DatabaseTestCase.swift in Sources */,
+				FBD5A2512364D101005A187E /* DatabaseObservationTests.swift in Sources */,
+				FBD5A24D2364D0F0005A187E /* DatabaseReadTests.swift in Sources */,
+				FBD5A24F2364D0F8005A187E /* DatabaseWriteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

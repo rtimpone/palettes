@@ -22,6 +22,12 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
         //load palettes from database
+        
+        //if database has not been seeded yet
+        
+            //seed it with the default data
+                //from a plist?
+                //from some json?
     }
     
     @IBAction func addAction(_ sender: Any) {

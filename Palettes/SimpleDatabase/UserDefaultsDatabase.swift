@@ -21,12 +21,13 @@ struct UserDefaultDatabase: Database {
     
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
+    var observers: [String: NSHashTable<AnyObject>] = [:]
     
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
     }
     
-    func insertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable {
+    func insertObject<T: Persistable>(_ object: T) throws {
         var objects = try fetchObjects(ofType: T.self)
         guard objects.first(where: { $0.primaryKey == object.primaryKey }) == nil else {
             let errorMessage = "Cannot insert object '\(object)' because an object with its primary key already exists"
@@ -34,9 +35,10 @@ struct UserDefaultDatabase: Database {
         }
         objects.append(object)
         try write(objects: objects, ofType: T.self)
+        notifyObservers(forType: T.self, ofUpdatedValues: objects)
     }
     
-    func updateObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable  {
+    func updateObject<T: Persistable>(_ object: T) throws {
         var objects = try fetchObjects(ofType: T.self)
         guard let oldObjectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) else {
             let errorMessage = "Unable to find object with primary key '\(object.primaryKey)' for update"
@@ -45,18 +47,20 @@ struct UserDefaultDatabase: Database {
         objects.remove(at: oldObjectIndex)
         objects.append(object)
         try write(objects: objects, ofType: T.self)
+        notifyObservers(forType: T.self, ofUpdatedValues: objects)
     }
     
-    func upsertObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable {
+    func upsertObject<T: Persistable>(_ object: T) throws {
         var objects = try fetchObjects(ofType: T.self)
         if let oldObjectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) {
             objects.remove(at: oldObjectIndex)
         }
         objects.append(object)
         try write(objects: objects, ofType: T.self)
+        notifyObservers(forType: T.self, ofUpdatedValues: objects)
     }
     
-    func deleteObject<T: Codable>(_ object: T) throws where T: UniquelyIdentifiable {
+    func deleteObject<T: Persistable>(_ object: T) throws {
         var objects = try fetchObjects(ofType: T.self)
         guard let objectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) else {
             let errorMessage = "Unable to find object with primary key '\(object.primaryKey)' for deletion"
@@ -64,15 +68,22 @@ struct UserDefaultDatabase: Database {
         }
         objects.remove(at: objectIndex)
         try write(objects: objects, ofType: T.self)
+        notifyObservers(forType: T.self, ofUpdatedValues: objects)
     }
     
-    func fetchObject<T: Codable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T? where T: UniquelyIdentifiable {
+    func fetchObject<T: Persistable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T? {
         let objects = try fetchObjects(ofType: type)
         return objects.first(where: { $0.primaryKey == primaryKey })
     }
     
-    func fetchObjects<T: Codable>(ofType type: T.Type) throws -> [T] {
+    func fetchObjects<T: Persistable>(ofType type: T.Type) throws -> [T] {
         return try read(objectsOfType: T.self)
+    }
+    
+    mutating func addObserver<O: DatabaseObserver, T: Persistable>(_ observer: O, forType type: T.Type) throws {
+        addNewObserver(observer, forType: type)
+        let objects = try fetchObjects(ofType: type)
+        observer.databaseDidAddObserver(initialValues: objects)
     }
 }
 
@@ -101,5 +112,27 @@ private extension UserDefaultDatabase {
             throw UserDefaultDatabaseError.writeError(errorMessage)
         }
         defaults.setValue(data, forKey: key)
+    }
+    
+    func observersForType<T>(_ type: T.Type) -> [DatabaseObserver] {
+        let key = String(describing: type)
+        guard let typeObservers = observers[key] else {
+            return []
+        }
+        return typeObservers.allObjects.compactMap{ $0 as? DatabaseObserver }
+    }
+    
+    mutating func addNewObserver<O: DatabaseObserver, T>(_ observer: O, forType type: T.Type) {
+        let key = String(describing: type)
+        let typeObservers = observers[key] ?? NSHashTable.weakObjects()
+        typeObservers.add(observer)
+        observers[key] = typeObservers
+    }
+    
+    func notifyObservers<T>(forType type: T.Type, ofUpdatedValues updatedValues: [T]) {
+        let typeObservers = observersForType(type)
+        for observer in typeObservers {
+            observer.databaseDidChange(updatedValues: updatedValues)
+        }
     }
 }

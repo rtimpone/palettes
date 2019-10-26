@@ -1,5 +1,5 @@
 //
-//  UserDefaultsDatabaseTests.swift
+//  DatabaseWriteTests.swift
 //  SimpleDatabaseTests
 //
 //  Created by Rob Timpone on 10/26/19.
@@ -9,34 +9,8 @@
 import XCTest
 @testable import SimpleDatabase
 
-class UserDefaultsDatabaseTests: XCTestCase {
+class DatabaseWriteTests: DatabaseTestCase {
 
-    var database: UserDefaultDatabase!
-    
-    override func setUp() {
-        super.setUp()
-        UserDefaults().removePersistentDomain(forName: name)
-        let defaults = UserDefaults(suiteName: name)!
-        database = UserDefaultDatabase(defaults: defaults)
-    }
-    
-    struct TestObject: Codable, UniquelyIdentifiable {
-        
-        typealias PrimaryKey = UUID
-        let primaryKey: UUID
-        let name: String
-        
-        init(name: String, primaryKey: UUID = UUID()) {
-            self.name = name
-            self.primaryKey = primaryKey
-        }
-    }
-    
-    func testReadEmptyDatabase() throws {
-        let objects = try database.fetchObjects(ofType: TestObject.self)
-        XCTAssertTrue(objects.isEmpty, "Expected the array to be empty because there is nothing in the database")
-    }
-    
     func testInsertObject() throws {
         
         let object = TestObject(name: "foo")
@@ -79,9 +53,7 @@ class UserDefaultsDatabaseTests: XCTestCase {
         
         let objects = try database.fetchObjects(ofType: TestObject.self)
         XCTAssertEqual(objects.count, 1, "Expected there to be only one object in the database because we inserted one, then updated it")
-        
-        let fetchedObject = try XCTUnwrap(objects.first)
-        XCTAssertEqual(fetchedObject.name, "bar", "Expected the name to be updated to the new value we gave it")
+        XCTAssertEqual(objects.first?.name, "bar", "Expected the name to be updated to the new value we gave it")
     }
     
     func testUpdatingNonExistantObjectThrows() {
@@ -111,9 +83,7 @@ class UserDefaultsDatabaseTests: XCTestCase {
         
         let objects = try database.fetchObjects(ofType: TestObject.self)
         XCTAssertEqual(objects.count, 1, "Expected there to be only one object in the database because we should have inserted one, then updated it during the two upserts")
-        
-        let fetchedObject = try XCTUnwrap(objects.first)
-        XCTAssertEqual(fetchedObject.name, "bar", "Expected the name to be updated to the new value we gave it")
+        XCTAssertEqual(objects.first?.name, "bar", "Expected the name to be updated to the new value we gave it")
     }
     
     func testDeleteObject() throws {
@@ -127,27 +97,6 @@ class UserDefaultsDatabaseTests: XCTestCase {
         try database.deleteObject(foo)
         let objects = try database.fetchObjects(ofType: TestObject.self)
         XCTAssertEqual(objects.count, 1, "Expected only one item to remain in the database because we deleted the other one")
-        
-        let object = try XCTUnwrap(objects.first)
-        XCTAssertEqual(object.name, "bar", "Expected the database to have deleted the 'foo' object")
-    }
-    
-    func testFetchObjectThatExistsInDatabase() throws {
-        
-        let foo = TestObject(name: "foo")
-        let bar = TestObject(name: "bar")
-        
-        try database.insertObject(foo)
-        try database.insertObject(bar)
-        
-        let fetchResult = try database.fetchObject(ofType: TestObject.self, withPrimaryKey: bar.primaryKey)
-        let object = try XCTUnwrap(fetchResult)
-        XCTAssertEqual(object.name, "bar", "Expected the correct object to have been fetched")
-    }
-    
-    func testFetchObjectThatDoesNotExistInDatabase() throws {
-        let randomPrimaryKey = UUID()
-        let fetchResult = try database.fetchObject(ofType: TestObject.self, withPrimaryKey: randomPrimaryKey)
-        XCTAssertNil(fetchResult)
+        XCTAssertEqual(objects.first?.name, "bar", "Expected the database to have deleted the 'foo' object")
     }
 }
