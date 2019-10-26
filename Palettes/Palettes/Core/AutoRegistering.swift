@@ -1,8 +1,8 @@
 //
-//  UITableView+XibRegistering.swift
-//  AutoRegistering
+//  AutoRegistering.swift
+//  Palettes
 //
-//  Created by Rob Timpone on 2/15/19.
+//  Created by Rob Timpone on 10/26/19.
 //  Copyright © 2019 Rob Timpone. All rights reserved.
 //
 

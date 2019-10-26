@@ -13,6 +13,15 @@
 		FB90F9E6236480D500BDF960 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9E4236480D500BDF960 /* StoryboardInstantiable.swift */; };
 		FB90F9EE236482AC00BDF960 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9ED236482AC00BDF960 /* ListViewController.swift */; };
 		FB90F9F0236482C000BDF960 /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90F9EF236482C000BDF960 /* ListViewController.storyboard */; };
+		FB90F9F423648A2500BDF960 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB90F9F223648A2500BDF960 /* ListCell.xib */; };
+		FB90F9F723648A9500BDF960 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9F623648A9500BDF960 /* ListCell.swift */; };
+		FB90F9F923648ABA00BDF960 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9F823648ABA00BDF960 /* Palette.swift */; };
+		FB90F9FB23648AD900BDF960 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */; };
+		FB90F9FE23648B1F00BDF960 /* BrightnessAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */; };
+		FB90FA0123648CC100BDF960 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0023648CC100BDF960 /* PaletteViewController.swift */; };
+		FB90FA0323648CD300BDF960 /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90FA0223648CD300BDF960 /* PaletteViewController.storyboard */; };
+		FB90FA0623648D2A00BDF960 /* CreatePaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90FA0523648D2A00BDF960 /* CreatePaletteViewController.swift */; };
+		FB90FA0823648D3100BDF960 /* CreatePaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,15 @@
 		FB90F9E4236480D500BDF960 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		FB90F9ED236482AC00BDF960 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		FB90F9EF236482C000BDF960 /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
+		FB90F9F223648A2500BDF960 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		FB90F9F623648A9500BDF960 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		FB90F9F823648ABA00BDF960 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessAnalyzer.swift; sourceTree = "<group>"; };
+		FB90FA0023648CC100BDF960 /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		FB90FA0223648CD300BDF960 /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
+		FB90FA0523648D2A00BDF960 /* CreatePaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaletteViewController.swift; sourceTree = "<group>"; };
+		FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePaletteViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +98,9 @@
 				FB90F9E92364825A00BDF960 /* Application Main */,
 				FB90F9E2236480B700BDF960 /* Core */,
 				FB90F9EA2364828100BDF960 /* Info */,
+				FB90F9F523648A3100BDF960 /* Models */,
 				FB90F9EB2364829500BDF960 /* Screens */,
+				FB90F9FC23648B0500BDF960 /* Utilities */,
 			);
 			path = Palettes;
 			sourceTree = "<group>";
@@ -99,6 +119,7 @@
 			children = (
 				FB90F9E3236480D500BDF960 /* AutoRegistering.swift */,
 				FB90F9E4236480D500BDF960 /* StoryboardInstantiable.swift */,
+				FB90F9FA23648AD900BDF960 /* UIColor+Extensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -122,7 +143,9 @@
 		FB90F9EB2364829500BDF960 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FB90FA0423648D1A00BDF960 /* Create Palette */,
 				FB90F9EC2364829D00BDF960 /* Palettes List */,
+				FB90F9FF23648CB000BDF960 /* Palette Details */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -130,10 +153,46 @@
 		FB90F9EC2364829D00BDF960 /* Palettes List */ = {
 			isa = PBXGroup;
 			children = (
+				FB90F9F623648A9500BDF960 /* ListCell.swift */,
+				FB90F9F223648A2500BDF960 /* ListCell.xib */,
 				FB90F9ED236482AC00BDF960 /* ListViewController.swift */,
 				FB90F9EF236482C000BDF960 /* ListViewController.storyboard */,
 			);
 			path = "Palettes List";
+			sourceTree = "<group>";
+		};
+		FB90F9F523648A3100BDF960 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB90F9F823648ABA00BDF960 /* Palette.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FB90F9FC23648B0500BDF960 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FB90F9FD23648B1F00BDF960 /* BrightnessAnalyzer.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FB90F9FF23648CB000BDF960 /* Palette Details */ = {
+			isa = PBXGroup;
+			children = (
+				FB90FA0023648CC100BDF960 /* PaletteViewController.swift */,
+				FB90FA0223648CD300BDF960 /* PaletteViewController.storyboard */,
+			);
+			path = "Palette Details";
+			sourceTree = "<group>";
+		};
+		FB90FA0423648D1A00BDF960 /* Create Palette */ = {
+			isa = PBXGroup;
+			children = (
+				FB90FA0523648D2A00BDF960 /* CreatePaletteViewController.swift */,
+				FB90FA0723648D3100BDF960 /* CreatePaletteViewController.storyboard */,
+			);
+			path = "Create Palette";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB90F9F0236482C000BDF960 /* ListViewController.storyboard in Resources */,
+				FB90F9F423648A2500BDF960 /* ListCell.xib in Resources */,
+				FB90FA0323648CD300BDF960 /* PaletteViewController.storyboard in Resources */,
+				FB90FA0823648D3100BDF960 /* CreatePaletteViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +298,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB90F9E5236480D500BDF960 /* AutoRegistering.swift in Sources */,
+				FB90FA0123648CC100BDF960 /* PaletteViewController.swift in Sources */,
+				FB90FA0623648D2A00BDF960 /* CreatePaletteViewController.swift in Sources */,
 				FB90F9E6236480D500BDF960 /* StoryboardInstantiable.swift in Sources */,
+				FB90F9FE23648B1F00BDF960 /* BrightnessAnalyzer.swift in Sources */,
 				FB90F9EE236482AC00BDF960 /* ListViewController.swift in Sources */,
+				FB90F9F923648ABA00BDF960 /* Palette.swift in Sources */,
+				FB90F9FB23648AD900BDF960 /* UIColor+Extensions.swift in Sources */,
+				FB90F9F723648A9500BDF960 /* ListCell.swift in Sources */,
 				FB90F9C123647FF000BDF960 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

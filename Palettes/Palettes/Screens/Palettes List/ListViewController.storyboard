@@ -14,15 +14,40 @@
                     <view key="view" contentMode="scaleToFill" id="h8F-XF-WPY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JCn-0G-skY">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="P9W-CL-ML9" id="ta2-oH-8wa"/>
+                                    <outlet property="delegate" destination="P9W-CL-ML9" id="XJ6-xk-Ere"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JCn-0G-skY" firstAttribute="bottom" secondItem="CC7-Kr-uca" secondAttribute="bottom" id="LbI-ED-kJm"/>
+                            <constraint firstItem="JCn-0G-skY" firstAttribute="top" secondItem="CC7-Kr-uca" secondAttribute="top" id="NZT-bJ-zYb"/>
+                            <constraint firstItem="JCn-0G-skY" firstAttribute="leading" secondItem="CC7-Kr-uca" secondAttribute="leading" id="jid-E8-28N"/>
+                            <constraint firstItem="JCn-0G-skY" firstAttribute="trailing" secondItem="CC7-Kr-uca" secondAttribute="trailing" id="zMk-sR-dYR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CC7-Kr-uca"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Color Palettes" id="jMb-A3-L5r"/>
+                    <navigationItem key="navigationItem" title="Color Palettes" id="jMb-A3-L5r">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vdZ-py-qQB">
+                            <connections>
+                                <action selector="addAction:" destination="P9W-CL-ML9" id="YQM-EQ-3xZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="JCn-0G-skY" id="yPk-BY-T5L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVx-1d-icM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="21"/>
+            <point key="canvasLocation" x="40.799999999999997" y="20.689655172413794"/>
         </scene>
     </scenes>
 </document>

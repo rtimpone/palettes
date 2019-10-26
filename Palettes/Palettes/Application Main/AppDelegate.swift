@@ -14,12 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        
         let vc = ListViewController.instantiateFromStoryboard()
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.tintColor = .darkGray
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = nvc
         window.makeKeyAndVisible()
         self.window = window
+        
         return true
     }
 }

@@ -1,9 +1,9 @@
 //
-//  StoryboardInstantiable.swift
-//  Cajetan
+//  StoryboardBased.swift
+//  Palettes
 //
-//  Created by Rob Timpone on 9/20/19.
-//  Copyright © 2019 Yello. All rights reserved.
+//  Created by Rob Timpone on 10/26/19.
+//  Copyright © 2019 Rob Timpone. All rights reserved.
 //
 
 import UIKit
@@ -47,7 +47,7 @@ extension StoryboardInstantiable where Self: UIViewController {
         
         let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
         guard let initialViewController = storyboard.instantiateInitialViewController() else {
-ListViewControllerListViewControllerListViewController            fatalError("Unable to find an initial view controller in storyboard named '\(storyboardName)'")
+            fatalError("Unable to find an initial view controller in storyboard named '\(storyboardName)'")
         }
         
         guard let instance = initialViewController as? Self else {
