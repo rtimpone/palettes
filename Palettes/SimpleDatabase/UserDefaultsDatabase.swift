@@ -19,9 +19,9 @@ struct UserDefaultDatabase: Database {
  
     let defaults: UserDefaults
     
-    private let decoder = JSONDecoder()
-    private let encoder = JSONEncoder()
-    var observers: [String: NSHashTable<AnyObject>] = [:]
+    let decoder = JSONDecoder()
+    let encoder = JSONEncoder()
+    var observationManager = ObservationManager()
     
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
@@ -81,7 +81,7 @@ struct UserDefaultDatabase: Database {
     }
     
     mutating func addObserver<O: DatabaseObserver, T: Persistable>(_ observer: O, forType type: T.Type) throws {
-        addNewObserver(observer, forType: type)
+        observationManager.addObserver(observer, forType: type)
         let objects = try fetchObjects(ofType: type)
         observer.databaseDidAddObserver(initialValues: objects)
     }
@@ -114,23 +114,8 @@ private extension UserDefaultDatabase {
         defaults.setValue(data, forKey: key)
     }
     
-    func observersForType<T>(_ type: T.Type) -> [DatabaseObserver] {
-        let key = String(describing: type)
-        guard let typeObservers = observers[key] else {
-            return []
-        }
-        return typeObservers.allObjects.compactMap{ $0 as? DatabaseObserver }
-    }
-    
-    mutating func addNewObserver<O: DatabaseObserver, T>(_ observer: O, forType type: T.Type) {
-        let key = String(describing: type)
-        let typeObservers = observers[key] ?? NSHashTable.weakObjects()
-        typeObservers.add(observer)
-        observers[key] = typeObservers
-    }
-    
     func notifyObservers<T>(forType type: T.Type, ofUpdatedValues updatedValues: [T]) {
-        let typeObservers = observersForType(type)
+        let typeObservers = observationManager.observers(forType: type)
         for observer in typeObservers {
             observer.databaseDidChange(updatedValues: updatedValues)
         }

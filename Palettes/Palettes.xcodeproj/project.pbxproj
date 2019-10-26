@@ -33,6 +33,7 @@
 		FBD5A24D2364D0F0005A187E /* DatabaseReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A24C2364D0F0005A187E /* DatabaseReadTests.swift */; };
 		FBD5A24F2364D0F8005A187E /* DatabaseWriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A24E2364D0F8005A187E /* DatabaseWriteTests.swift */; };
 		FBD5A2512364D101005A187E /* DatabaseObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD5A2502364D101005A187E /* DatabaseObservationTests.swift */; };
+		FBF4C5EC2364F20D00BCE6A9 /* ObservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C5EB2364F20D00BCE6A9 /* ObservationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		FBD5A24C2364D0F0005A187E /* DatabaseReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReadTests.swift; sourceTree = "<group>"; };
 		FBD5A24E2364D0F8005A187E /* DatabaseWriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWriteTests.swift; sourceTree = "<group>"; };
 		FBD5A2502364D101005A187E /* DatabaseObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseObservationTests.swift; sourceTree = "<group>"; };
+		FBF4C5EB2364F20D00BCE6A9 /* ObservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 				FB90FA122364904500BDF960 /* SimpleDatabase.h */,
 				FB90FA132364904500BDF960 /* Info.plist */,
 				FB90FA2E2364905100BDF960 /* Database.swift */,
+				FBF4C5EB2364F20D00BCE6A9 /* ObservationManager.swift */,
 				FB90FA302364905900BDF960 /* UserDefaultsDatabase.swift */,
 			);
 			path = SimpleDatabase;
@@ -500,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB90FA2F2364905100BDF960 /* Database.swift in Sources */,
+				FBF4C5EC2364F20D00BCE6A9 /* ObservationManager.swift in Sources */,
 				FB90FA312364905900BDF960 /* UserDefaultsDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

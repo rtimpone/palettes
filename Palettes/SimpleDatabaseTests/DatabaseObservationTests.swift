@@ -91,18 +91,16 @@ class DatabaseObservationTests: DatabaseTestCase {
         
         var observer: TestObserver? = TestObserver()
         try database.addObserver(observer!, forType: TestObject.self)
-        XCTAssertEqual(database.observers.count, 1, "Expected the database to have an observer because we just added one")
+        
+        var observersCount = database.observationManager.numberOfObservers()
+        XCTAssertEqual(observersCount, 1, "Expected the database to have an observer because we just added one")
         
         observer = nil
         
         let object = TestObject(name: "foo")
         try database.insertObject(object)
         
-        var observersCount = 0
-        for (_, observers) in database.observers {
-            observersCount += observers.allObjects.count
-        }
-        
+        observersCount = database.observationManager.numberOfObservers()
         XCTAssertEqual(observersCount, 0, "Expected the database to no longer have any observers since the observer was deallocated")
     }
     
