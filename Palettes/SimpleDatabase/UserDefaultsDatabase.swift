@@ -9,16 +9,13 @@
 import Foundation
 
 enum UserDefaultDatabaseError: Error {
-    case duplicateFoundWhileTryingToInsert(String)
-    case objectNotFound(String)
     case readError(String)
     case writeError(String)
 }
 
 struct UserDefaultDatabase: Database {
- 
-    let defaults: UserDefaults
     
+    let defaults: UserDefaults
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
     var observationManager = ObservationManager()
@@ -27,48 +24,20 @@ struct UserDefaultDatabase: Database {
         self.defaults = defaults
     }
     
-    func insertObject<T: Persistable>(_ object: T) throws {
-        var objects = try fetchObjects(ofType: T.self)
-        guard objects.first(where: { $0.primaryKey == object.primaryKey }) == nil else {
-            let errorMessage = "Cannot insert object '\(object)' because an object with its primary key already exists"
-            throw UserDefaultDatabaseError.duplicateFoundWhileTryingToInsert(errorMessage)
-        }
-        objects.append(object)
-        try write(objects: objects, ofType: T.self)
-        notifyObservers(forType: T.self, ofUpdatedValues: objects)
-    }
-    
-    func updateObject<T: Persistable>(_ object: T) throws {
-        var objects = try fetchObjects(ofType: T.self)
-        guard let oldObjectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) else {
-            let errorMessage = "Unable to find object with primary key '\(object.primaryKey)' for update"
-            throw UserDefaultDatabaseError.objectNotFound(errorMessage)
-        }
-        objects.remove(at: oldObjectIndex)
-        objects.append(object)
-        try write(objects: objects, ofType: T.self)
-        notifyObservers(forType: T.self, ofUpdatedValues: objects)
-    }
-    
     func upsertObject<T: Persistable>(_ object: T) throws {
-        var objects = try fetchObjects(ofType: T.self)
-        if let oldObjectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) {
-            objects.remove(at: oldObjectIndex)
-        }
-        objects.append(object)
-        try write(objects: objects, ofType: T.self)
-        notifyObservers(forType: T.self, ofUpdatedValues: objects)
+        try upsertObjects([object])
+    }
+    
+    func upsertObjects<T: Persistable>(_ objectsToUpsert: [T]) throws {
+        try removeObjectsFromDatabaseWithPrimaryKeysMatchingObjectsIn(objectsToUpsert, andAddNewObjectsToDatabase: objectsToUpsert)
     }
     
     func deleteObject<T: Persistable>(_ object: T) throws {
-        var objects = try fetchObjects(ofType: T.self)
-        guard let objectIndex = objects.firstIndex(where: { $0.primaryKey == object.primaryKey }) else {
-            let errorMessage = "Unable to find object with primary key '\(object.primaryKey)' for deletion"
-            throw UserDefaultDatabaseError.objectNotFound(errorMessage)
-        }
-        objects.remove(at: objectIndex)
-        try write(objects: objects, ofType: T.self)
-        notifyObservers(forType: T.self, ofUpdatedValues: objects)
+        try deleteObjects([object])
+    }
+    
+    func deleteObjects<T: Persistable>(_ objectsToDelete: [T]) throws {
+        try removeObjectsFromDatabaseWithPrimaryKeysMatchingObjectsIn(objectsToDelete)
     }
     
     func fetchObject<T: Persistable>(ofType type: T.Type, withPrimaryKey primaryKey: T.PrimaryKey) throws -> T? {
@@ -81,17 +50,32 @@ struct UserDefaultDatabase: Database {
     }
     
     mutating func addObserver<O: DatabaseObserver, T: Persistable>(_ observer: O, forType type: T.Type) throws {
-        observationManager.addObserver(observer, forType: type)
-        let objects = try fetchObjects(ofType: type)
-        observer.databaseDidAddObserver(initialValues: objects)
+        let initialValues = try fetchObjects(ofType: type)
+        observationManager.addObserver(observer, forType: type, withInitialValues: initialValues)
+    }
+    
+    func resetDatabase() {
+        writeDictionaryToUserDefaults([:])
+        observationManager.notifyObserversOfDatabaseReset()
     }
 }
 
 private extension UserDefaultDatabase {
     
+    static let dictionaryKey = "userDefaultsDictionaryDatabaseKey"
+    
+    func readDictionaryFromUserDefaults() -> [String: Any] {
+        return defaults.value(forKey: UserDefaultDatabase.dictionaryKey) as? [String: Any] ?? [:]
+    }
+    
+    func writeDictionaryToUserDefaults(_ dictionary: [String: Any]) {
+        defaults.setValue(dictionary, forKey: UserDefaultDatabase.dictionaryKey)
+    }
+    
     func read<T: Codable>(objectsOfType type: T.Type) throws -> [T] {
+        let dictionary = readDictionaryFromUserDefaults()
         let key = String(describing: type)
-        guard let value = defaults.value(forKey: key) else {
+        guard let value = dictionary[key] else {
             return []
         }
         guard let data = value as? Data else {
@@ -106,18 +90,24 @@ private extension UserDefaultDatabase {
     }
     
     func write<T: Codable>(objects: [T], ofType type: T.Type) throws {
+        var dictionary = readDictionaryFromUserDefaults()
         let key = String(describing: type)
         guard let data = try? encoder.encode(objects) else {
             let errorMessage = "Unable to encode array of objects: \(objects)"
             throw UserDefaultDatabaseError.writeError(errorMessage)
         }
-        defaults.setValue(data, forKey: key)
+        dictionary[key] = data
+        writeDictionaryToUserDefaults(dictionary)
     }
     
-    func notifyObservers<T>(forType type: T.Type, ofUpdatedValues updatedValues: [T]) {
-        let typeObservers = observationManager.observers(forType: type)
-        for observer in typeObservers {
-            observer.databaseDidChange(updatedValues: updatedValues)
+    func removeObjectsFromDatabaseWithPrimaryKeysMatchingObjectsIn<T: Persistable>(_ objectsToRemove: [T], andAddNewObjectsToDatabase objectsToInsert: [T]? = nil) throws {
+        var databaseObjects = try fetchObjects(ofType: T.self)
+        let primaryKeysOfObjectsToRemove = Set(objectsToRemove.map { $0.primaryKey })
+        databaseObjects.removeAll(where: { primaryKeysOfObjectsToRemove.contains($0.primaryKey) })
+        if let objectsToInsert = objectsToInsert {
+            databaseObjects.append(contentsOf: objectsToInsert)
         }
+        try write(objects: databaseObjects, ofType: T.self)
+        observationManager.notifyObservers(forType: T.self, ofUpdatedValues: databaseObjects)
     }
 }

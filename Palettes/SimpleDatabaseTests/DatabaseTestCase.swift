@@ -32,3 +32,9 @@ struct TestObject: Codable, UniquelyIdentifiable {
         self.primaryKey = primaryKey
     }
 }
+
+struct OtherTestObject: Codable, UniquelyIdentifiable {
+    
+    typealias PrimaryKey = UUID
+    let primaryKey = UUID()
+}

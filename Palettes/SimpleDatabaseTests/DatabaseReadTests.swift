@@ -17,13 +17,9 @@ class DatabaseReadTests: DatabaseTestCase {
     }
     
     func testFetchObjectThatExistsInDatabase() throws {
-        
         let foo = TestObject(name: "foo")
         let bar = TestObject(name: "bar")
-        
-        try database.insertObject(foo)
-        try database.insertObject(bar)
-        
+        try database.upsertObjects([foo, bar])
         let fetchResult = try database.fetchObject(ofType: TestObject.self, withPrimaryKey: bar.primaryKey)
         XCTAssertEqual(fetchResult?.name, "bar", "Expected the correct object to have been fetched")
     }
@@ -32,5 +28,14 @@ class DatabaseReadTests: DatabaseTestCase {
         let randomPrimaryKey = UUID()
         let fetchResult = try database.fetchObject(ofType: TestObject.self, withPrimaryKey: randomPrimaryKey)
         XCTAssertNil(fetchResult)
+    }
+    
+    func testFetchObjectOfType() throws {
+        let foo = TestObject(name: "foo")
+        let bar = OtherTestObject()
+        try database.upsertObject(foo)
+        try database.upsertObject(bar)
+        let fetchedObjects = try database.fetchObjects(ofType: TestObject.self)
+        XCTAssertEqual(fetchedObjects.count, 1, "Expected only one object to be returned because we only inserted one of type TestObject")
     }
 }
